@@ -113,19 +113,22 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 
 /* ══ PROJECTS ══ */
 #projects{background:var(--bg);}
-.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
-.proj-card{background:var(--paper);border:1.5px solid var(--border);border-radius:16px;padding:28px;transition:transform 0.25s,box-shadow 0.25s;position:relative;overflow:hidden;}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch;}
+.proj-card{
+  background:var(--paper);border:1.5px solid var(--border);border-radius:16px;padding:28px;
+  transition:transform 0.25s,box-shadow 0.25s;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+}
 .proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--pink-light),var(--pink));}
 .proj-card:hover{transform:translateY(-5px);box-shadow:0 14px 36px var(--shadow);}
-.proj-card.featured{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;}
 .proj-icon{font-size:1.8rem;margin-bottom:12px;}
 .proj-name{font-family:'Lora',serif;font-size:1.15rem;font-weight:600;color:var(--ink);margin-bottom:5px;}
 .proj-stack{font-size:0.71rem;color:var(--ink-light);margin-bottom:10px;font-weight:500;letter-spacing:0.03em;}
-.proj-desc{font-size:0.79rem;color:var(--ink-light);line-height:1.68;margin-bottom:14px;}
-.proj-bullets{list-style:none;display:flex;flex-direction:column;gap:5px;margin-bottom:16px;}
+.proj-desc{font-size:0.79rem;color:var(--ink-light);line-height:1.68;margin-bottom:14px;flex:1;}
+.proj-bullets{list-style:none;display:flex;flex-direction:column;gap:5px;margin-bottom:16px;flex:1;}
 .proj-bullets li{font-size:0.78rem;color:var(--ink-light);line-height:1.5;padding-left:14px;position:relative;}
 .proj-bullets li::before{content:'→';position:absolute;left:0;color:var(--pink-light);font-size:0.74rem;}
-.tag-row{display:flex;flex-wrap:wrap;gap:5px;}
+.tag-row{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:4px;}
 .tag{font-size:0.67rem;padding:3px 10px;border-radius:14px;background:var(--pink-pale);border:1px solid var(--pink-light);color:var(--rose);font-weight:600;}
 
 /* ══ LEADERSHIP ══ */
@@ -252,8 +255,7 @@ footer{border-top:1px solid var(--border-light);padding:38px 52px;text-align:cen
   .nb-hi{font-size:1.9rem;}
 
   /* Grids */
-  .projects-grid{grid-template-columns:1fr;}
-  .proj-card.featured{grid-column:span 1;display:block;}
+  .projects-grid{grid-template-columns:1fr 1fr;}
   .lead-grid{grid-template-columns:1fr 1fr;gap:16px;}
   .ach-grid{grid-template-columns:1fr 1fr;gap:16px;}
   .skills-cats{grid-template-columns:1fr 1fr;}
@@ -297,6 +299,7 @@ footer{border-top:1px solid var(--border-light);padding:38px 52px;text-align:cen
   .edu-inst{font-size:0.79rem;}
 
   /* Grids */
+  .projects-grid{grid-template-columns:1fr;}
   .lead-grid{grid-template-columns:1fr;}
   .ach-grid{grid-template-columns:1fr 1fr;}
   .skills-cats{grid-template-columns:1fr;}
@@ -469,25 +472,21 @@ footer{border-top:1px solid var(--border-light);padding:38px 52px;text-align:cen
     </div>
     <div class="projects-grid">
 
-      <!-- Featured -->
-      <div class="proj-card featured reveal rd1">
-        <div>
-          <div class="proj-icon">🧠</div>
-          <div class="proj-name">Smart Learning Systems</div>
-          <div class="proj-stack">HTML · CSS · JavaScript · UI/UX</div>
-          <div class="proj-desc">An interactive student productivity dashboard to track study habits, monitor wellbeing and generate performance insights.</div>
-          <ul class="proj-bullets">
-            <li>Study log tracking with subject, topic and duration</li>
-            <li>Built-in Pomodoro timer for focused sessions</li>
-            <li>Energy and stress tracking for wellbeing monitoring</li>
-            <li>Burnout detection using stress vs energy patterns</li>
-          </ul>
-        </div>
-        <div>
-          <div class="tag-row" style="margin-bottom:20px">
-            <span class="tag">JavaScript</span><span class="tag">UI/UX</span>
-            <span class="tag">Dashboard</span><span class="tag">Productivity</span><span class="tag">Data Processing</span>
-          </div>
+      <!-- Smart Learning Systems -->
+      <div class="proj-card reveal rd1">
+        <div class="proj-icon">🧠</div>
+        <div class="proj-name">Smart Learning Systems</div>
+        <div class="proj-stack">HTML · CSS · JavaScript · UI/UX</div>
+        <div class="proj-desc">An interactive student productivity dashboard to track study habits, monitor wellbeing and generate performance insights.</div>
+        <ul class="proj-bullets">
+          <li>Study log tracking with subject, topic and duration</li>
+          <li>Built-in Pomodoro timer for focused sessions</li>
+          <li>Energy and stress tracking for wellbeing monitoring</li>
+          <li>Burnout detection using stress vs energy patterns</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">JavaScript</span><span class="tag">UI/UX</span>
+          <span class="tag">Dashboard</span><span class="tag">Productivity</span><span class="tag">Data Processing</span>
         </div>
       </div>
 
@@ -507,19 +506,20 @@ footer{border-top:1px solid var(--border-light);padding:38px 52px;text-align:cen
         </div>
       </div>
 
-      <!-- JSON Telemetry -->
+      <!-- Sorting Visualizer -->
       <div class="proj-card reveal rd3">
         <div class="proj-icon">📡</div>
-        <div class="proj-name">JSON Telemetry Normalizer</div>
-        <div class="proj-stack">Python · IoT · Data Engineering</div>
-        <div class="proj-desc">A system to standardise inconsistent IoT telemetry JSON formats, improving data consistency and efficiency across device ecosystems.</div>
+        <div class="proj-name">Sorting Algorithm Visualizer</div>
+        <div class="proj-stack">JavaScript · DSA · Visualization</div>
+        <div class="proj-desc">An interactive tool to visualize how different sorting algorithms work step-by-step, helping build deeper intuition behind their logic and performance.</div>
         <ul class="proj-bullets">
-          <li>Normalisation layer for heterogeneous IoT JSON schemas</li>
-          <li>Significantly improved downstream data processing reliability</li>
-          <li>Reduced data inconsistency errors across device pipelines</li>
+          <li>Real-time visualization of comparisons, swaps, and decisions</li>
+          <li>Step-by-step execution using generator functions</li>
+          <li>Compare multiple algorithms on identical datasets</li>
+          <li>Designed to simplify understanding of core DSA concepts</li>
         </ul>
         <div class="tag-row">
-          <span class="tag">Python</span><span class="tag">JSON</span><span class="tag">IoT</span><span class="tag">Data Engineering</span>
+          <span class="tag">JavaScript</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Algorithms</span>
         </div>
       </div>
 
